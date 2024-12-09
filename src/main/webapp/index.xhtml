@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Product List</title>
+</h:head>
+<h:head>
+    <title>Product List</title>
+</h:head>
+<h:body>
+    <h1>Product List</h1>
+    <h:form>
+        <h:dataTable value="#{productController.products}" var="product">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{product.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{product.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                #{product.price}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Actions</f:facet>
+                <h:commandButton value="Delete" action="#{productController.deleteProduct(product.id)}"/>
+            </h:column>
+        </h:dataTable>
+        <br/>
+        <h:commandButton value="Add Product" action="#{productController.loadAddProductPage}"/>
+    </h:form>
+</h:body>
+</html>
